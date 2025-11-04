@@ -10,7 +10,7 @@ public class Reviews{
 
       class ReviewNode { // linked list node
           Review review;
-          Reviews.ReviewNode next;
+          ReviewNode next;
 
           public ReviewNode(Review review) {
               this.review = review;
@@ -27,8 +27,25 @@ public class Reviews{
       head = newNode;
   }
   // edit review 
-  public void edit(int reviewId , Customer customer , Product product , int rating , String comment){
+  public boolean edit(int reviewId , Customer customer , Product product , int rating , String comment){
+      ReviewNode current = head;
+      boolean found = false;
 
+      if (head == null) return false;
+      while (current.next != null) {
+          if (current.review.reviewId == reviewId) {
+              found = true;
+              break;
+          }
+          current = current.next;
+      } if (current.review.reviewId == reviewId) found = true;
+      if (found) {
+          current.review.setCustomer(customer);
+          current.review.setProduct(product);
+          current.review.setRating(rating);
+          current.review.setComment(comment);
+          return true;
+      } return false;
   }
   // get average rating for product 
   public double getAverageRating(int productId){
