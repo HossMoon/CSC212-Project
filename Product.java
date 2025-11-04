@@ -26,6 +26,8 @@ public class Product {
     public Reviews getReviews() {
         return reviews;
     }
-   
-
+    public void setName(String name) { this.name = name; }
+    public void setPrice(double price) { this.price = price; }
+    public void setStock(int stock) { this.stock = stock; }
+    //public void setReviews(Reviews reviews) { this.reviews = reviews; }
 }
