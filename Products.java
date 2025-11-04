@@ -1,19 +1,9 @@
-  //Operations:
-  //Add/remove/update products.
-
-  //Search by ID or name (linear).
-
-  //Track out-of-stock products.
-
-    // Time complexity:
+    //Time complexity:
 //add: O(1)
 //remove: O(n)
-//update: O(?)
+//update: O(n)
 //search: O(n)
-//trackOutOfStock: O(?)
-
-
-
+//trackOutOfStock: O(n)
 public class Products{
 
     class ProductNode { // linked list node
@@ -31,9 +21,9 @@ public class Products{
   //add product 
   public void add(int productId , String name , double price , int stock){
       ProductNode newNode = new ProductNode(new Product(productId, name, price, stock, null));
-      ProductNode current = head;
-      newNode = head;
-      newNode.next = current;
+      //replicated from the create method from class orders
+      newNode.next = head;
+      head = newNode;
   }
   // remove a product
   public boolean remove(int productId){
@@ -69,6 +59,8 @@ public class Products{
   public boolean update(int productId , String name , double price , int stock){
       ProductNode current = head;
       boolean found = false;
+
+      if (head == null) return false;
       while (current.next != null) {
           if (current.product.productId == productId) {
               found = true;
@@ -101,7 +93,30 @@ public class Products{
   }
   // print product details where stock == 0 
   public void trackOutOfStock(){
+      ProductNode current = head;
+      int outOfStockCount = 0;
 
+      while (current.next != null) {
+          if (current.product.stock == 0) {
+              System.out.printf("ProductId: %d, Name: %s, Price: %.2f, Stock: %d\n",
+                      current.product.productId,
+                      current.product.name,
+                      current.product.price,
+                      current.product.stock);
+              outOfStockCount++;
+          }
+          current = current.next;
+       }
+      if (current.product.stock == 0) {
+          System.out.printf("ProductId: %d, Name: %s, Price: %.2f, Stock: %d\n",
+                  current.product.productId,
+                  current.product.name,
+                  current.product.price,
+                  current.product.stock);
+          outOfStockCount++;
+      } if (outOfStockCount == 0) System.out.println("There are no products out of stock");
   }
-  
+
+  //List of reviews?
+
 }
