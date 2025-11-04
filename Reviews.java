@@ -8,10 +8,23 @@
   //Get an average rating for product.
 public class Reviews{
 
+      class ReviewNode { // linked list node
+          Review review;
+          Reviews.ReviewNode next;
+
+          public ReviewNode(Review review) {
+              this.review = review;
+              this.next = null;
+          }
+      }
+
+      ReviewNode head;
 
   // add review 
   public void add(int reviewId , Customer customer , Product product , int rating , String comment){
-    
+      Reviews.ReviewNode newNode = new Reviews.ReviewNode(new Review(reviewId, customer, product, rating ,comment));//replicated from the create method from class orders
+      newNode.next = head;
+      head = newNode;
   }
   // edit review 
   public void edit(int reviewId , Customer customer , Product product , int rating , String comment){
