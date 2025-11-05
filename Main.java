@@ -181,8 +181,19 @@ public static void main(String[] args) {
       else if(choice == 6)
       {
         //Suggest top 3 products by average rating
-        System.out.println("Top 3 products by average rating:");
-        
+          Products.ProductNode current = products.head;
+          Product currentProduct = current.product;
+          Reviews productReviews = currentProduct.getReviews();
+          Product top1 = null;
+          Product top2 = null;
+          Product top3 = null;
+          double top1_avg = 0.0;
+          double top2_avg = 0.0;
+          double top3_avg = 0.0;
+
+
+
+          System.out.println("Top 3 products by average rating:");
       }
       else if(choice == 7)
       {

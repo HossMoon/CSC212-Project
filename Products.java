@@ -75,21 +75,21 @@ public class Products{
           return true;
       } return false;
   }
-  // search by id, proposed to change method type to Product
-  public boolean search(int productId){
+  // search by id
+  public Product search(int productId){
       ProductNode current = head;
-      while (current.next != null) {
-          if (current.product.productId == productId) return true;
+      while (current != null) {
+          if (current.product.productId == productId) return current.product;
           current = current.next;
-      } return false;
+      } return null;
   }
-  // search by name, proposed to change method type to Product
-  public boolean search(String name){
+  // search by name
+  public Product search(String name){
       ProductNode current = head;
-      while (current.next != null) {
-          if (current.product.name.equalsIgnoreCase(name)) return true;
+      while (current != null) {
+          if (current.product.name.equalsIgnoreCase(name)) return current.product;
           current = current.next;
-      } return false;
+      } return null;
   }
   // print product details where stock == 0 
   public void trackOutOfStock(){

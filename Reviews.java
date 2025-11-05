@@ -47,9 +47,18 @@ public class Reviews{
           return true;
       } return false;
   }
-  // get average rating for product 
-  public double getAverageRating(int productId){
-     return 0.0;
+  // get average rating for product, continuation in main to link with product
+  public double getAverageRating(){
+      ReviewNode current = head;
+      double ratingTotal = 0;
+      int count = 0;
+
+      if (head == null) return 0.0;
+      while (current != null) {
+          ratingTotal += current.review.rating;
+          count++;
+      } if (count == 0) return 0.0;
+      return ratingTotal/count;
   }
  // extract reviews for a specific customer using array is optinal use the most efficient linear data structure i suggested use a class Reviews itself as a return type
  // you should add the time complexity of this method as a comment
