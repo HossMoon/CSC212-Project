@@ -22,8 +22,8 @@ public class Products{
 
   }
   // search by id
-  public boolean search(int productId){
-     return true;
+  public Product search(int productId){
+     return null;
   }
   // search by name
   public boolean search(String name){
@@ -32,6 +32,10 @@ public class Products{
   // print product details where stock == 0 
   public void trackOutOfStock(){
 
+  }
+  // get product ids as a string of format "id1;id2;..;idn"
+  public String getProuductIds(){
+      return "";
   }
   
 }
