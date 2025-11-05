@@ -3,7 +3,6 @@ public class Product {
     String name;
     double price;
     int stock;
-    Reviews reviews;
     public Product(int productId, String name, double price, int stock) {
         this.productId = productId;
         this.name = name;
@@ -22,11 +21,7 @@ public class Product {
     public int getStock() {
         return stock;
     }
-    public Reviews getReviews() {
-        return reviews;
-    }
-    public void setName(String name) { this.name = name; }
-    public void setPrice(double price) { this.price = price; }
-    public void setStock(int stock) { this.stock = stock; }
-    //public void setReviews(Reviews reviews) { this.reviews = reviews; }
+
+   
+
 }
