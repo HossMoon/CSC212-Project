@@ -20,7 +20,7 @@ public class Products{
 
   //add product 
   public void add(int productId , String name , double price , int stock){
-      ProductNode newNode = new ProductNode(new Product(productId, name, price, stock, null));
+      ProductNode newNode = new ProductNode(new Product(productId, name, price, stock));
       //replicated from the create method from class orders
       newNode.next = head;
       head = newNode;
@@ -75,7 +75,7 @@ public class Products{
           return true;
       } return false;
   }
-  // search by id
+  // search by id, proposed to change method type to Product
   public boolean search(int productId){
       ProductNode current = head;
       while (current.next != null) {
@@ -83,7 +83,7 @@ public class Products{
           current = current.next;
       } return false;
   }
-  // search by name
+  // search by name, proposed to change method type to Product
   public boolean search(String name){
       ProductNode current = head;
       while (current.next != null) {
