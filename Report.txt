@@ -1,0 +1,77 @@
+class Customers:
+
+Data Structure:Linked List
+
+methods:
+register to add a Customer  time comlexity:o(1)
+
+placeOrder to add an order to a customer  time comlexity:o(n)
+
+viewOrderHistory to print order history for a customer  time complexity:o(n)
+
+serarch for a customer  time complexity:o(n)
+
+
+class Products:
+
+Data Structure:Linked List
+
+methods:
+add a product  time complexity:o(1)
+
+remove a product time complexity:o(n)
+
+update a product time complexity:o(n)
+
+search for a product by name and ID time complexity:o(n)
+
+trackOutOfStock to remove out of stock product from the system time complexity:o(n)
+
+getTopThreeProducts to get top three product by average rating + helper method insertionSort  time complexity:o(n^2)
+
+getProductsIds to return String with IDs of product with ";" between them  time complexity:o(n)
+
+addReviewsToProduct to add a review to a product time complexity:o(n)
+
+class Order:
+
+Data Structure:Linked List
+
+methods:
+create to add an Order  time complexity:o(1)
+
+cancel to remove an order from the system  time complexity:o(n)
+
+updateStatus to update an order  time complexity:o(n)
+
+search for an order  time complexity:o(n)
+
+getOrdersBetweenDates + helper method compareDates to return orders between to dates  time Complexity:o(n)
+
+printOrders to print Orders  time Complexity:o(n)
+
+class Review:
+
+Data Structure:Linked List
+
+methods:
+add to add a Review  time complexity:o(1)
+
+edit to edit a Review  time complexity:o(n)
+
+getAverageRating to get average rating of the Reviews  time complexity:o(n)
+
+extractReviewCustomer get Reviews for a Customer  time complexity:o(n)
+
+listCommonProductsWithMoreThanFour list common products that have been Reviewd by two customers with more than 4 rating  time complexity:o(n^2)
+
+printReviews to print Reviews  time complexity:o(n)
+
+
+
+Customer,Product,Order and Review classes with setters and getters
+
+Main class with main method to display simple UI + reading and writing CSV files 
+
+
+

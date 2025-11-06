@@ -123,5 +123,14 @@ public class Orders{
       if(day1 > day2) return 1;
       return 0; //equal
   }
+
+  public void printOrders(){
+    OrderNode current = head;
+    while(current != null)
+    {
+      System.out.println("Order ID: " + current.order.getOrderId() + ", Customer ID: " + current.order.getCustomer().getCustomerId() + ", Total Price: " + current.order.getTotalPrice() + ", Order Date: " + current.order.getOrderDate() + ", Status: " + current.order.getStatus());
+      current = current.next;
+    }
+  }
  
 }
