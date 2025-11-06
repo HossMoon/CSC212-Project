@@ -20,7 +20,7 @@ public class Main {
   static Products products= new Products();
   static Customers customers= new Customers();
   static Orders orders= new Orders();
-  static Reviews reviews= new Reviews();
+  //static Reviews reviews= new Reviews();
 public static void main(String[] args) {
   readCSVCustomer("customers.csv");
   readCSVProduct("products.csv");
@@ -61,7 +61,7 @@ public static void main(String[] args) {
         products.add(productId , name , price , stock);
         writeCSVProduct("products.csv" , newProduct);
         System.out.println("Product added successfully.");
-        
+
       }
       else if(choice == 2)
       {
@@ -130,7 +130,7 @@ public static void main(String[] args) {
         //Add review
         System.out.println("Enter review ID: ");
         int reviewId = scanner.nextInt();
-        if( reviews.search(reviewId) != null)
+        if( searchReviewGlobally(reviewId) != null)
         {
           System.out.println("Review with this ID already exists.");
           continue;
@@ -156,7 +156,11 @@ public static void main(String[] args) {
         System.out.println("Enter comment: ");
         String comment = scanner.next();
         Review newReview = new Review(reviewId , C , P , rating , comment);
-        reviews.add(reviewId , C , P , rating , comment);
+
+        //replaced review.add with the following to avoid error
+        Reviews productReviews = P.getReviews();
+        productReviews.add(reviewId , C , P , rating , comment);
+
         writeCSVReviews("reviews.csv" , newReview);
         System.out.println("Review added successfully.");
       }
@@ -170,27 +174,86 @@ public static void main(String[] args) {
           System.out.println("Customer with this ID does not exist.");
           continue;
         }
-        Review[] reviewCustomers = reviews.extractReviewCustomer(customerId);
-        System.out.println("Reviews for customer ID " + customerId + ":");
+        //updated the line below to use extractReviewsByCustomer method
+        Review[] reviewCustomers = extractReviewsByCustomer(customerId);        System.out.println("Reviews for customer ID " + customerId + ":");
         for(Review cust : reviewCustomers)
         {
           System.out.println("Review ID: " + cust.getReviewId() + ", Product ID: " + cust.getProduct().getProductId() + ", Rating: " + cust.getRating() + ", Comment: " + cust.getComment());
         }
-        
+
       }
       else if(choice == 6)
       {
         //Suggest top 3 products by average rating
-        System.out.println("Top 3 products by average rating:");
-        
+          Products.ProductNode current = products.head;
+          Product top1 = null;
+          Product top2 = null;
+          Product top3 = null;
+          double top1_avg = 0.0;
+          double top2_avg = 0.0;
+          double top3_avg = 0.0;
+
+          while (current != null) {
+              Product currentProduct = current.product;
+              Reviews productReviews = currentProduct.getReviews();
+              double currentAvg = productReviews.getAverageRating();
+
+              if (currentAvg > top1_avg) {
+                  top3_avg = top2_avg;
+                  top3 = top2;
+                  top2_avg = top1_avg;
+                  top2 = top1;
+
+                  top1_avg = currentAvg;
+                  top1 = currentProduct;
+              } else if (currentAvg > top2_avg) {
+                  top3_avg = top2_avg;
+                  top3 = top2;
+
+                  top2_avg = currentAvg;
+                  top2 = currentProduct;
+              } else if (currentAvg > top3_avg) {
+                  top3_avg = currentAvg;
+                  top3 = currentProduct;
+              } current = current.next;
+          }
+          System.out.println("Top 3 products by average rating:");
+          if (top1 != null) System.out.printf("1- %s, Rating: %.2f\n", top1.getName(), top1_avg);
+          if (top2 != null) System.out.printf("2- %s, Rating: %.2f\n", top2.getName(), top2_avg);
+          if (top3 != null) System.out.printf("3- %s, Rating: %.2f\n", top3.getName(), top3_avg);
       }
+
       else if(choice == 7)
       {
         //list Orders between two dates
       }
       else if(choice == 8)
       {
-        //list common products reviewed by two customers with average rating more than a specified rating of 5
+          //list common products reviewed by two customers with average rating > 4
+          System.out.println("Enter first customer ID: ");
+          int id1 = scanner.nextInt();
+          if(customers.searchCustomer(id1) == null) {
+              System.out.println("Customer 1 not found.");
+              continue;
+          }
+          System.out.println("Enter second customer ID: ");
+          int id2 = scanner.nextInt();
+          if(customers.searchCustomer(id2) == null) {
+              System.out.println("Customer 2 not found.");
+              continue;
+          }
+          Products commonList = listCommonProductsWithMoreThanRating(id1, id2);
+          System.out.println("Common products with rating > 4.0:");
+
+          Products.ProductNode current = commonList.head;
+          if (current == null)
+              System.out.println("No common products found matching the criteria.");
+
+          while (current != null) {
+              Product p = current.product;
+              System.out.println("- Product: " + p.getName());
+              current = current.next;
+          }
       }
 
 
@@ -317,8 +380,13 @@ public static void readCSVReviews(String filePath){
                 //add review to the system
                 Customer C = customers.searchCustomer(customerId);
                 Product P = products.search(productId);
-                reviews.add(reviewId , C , P , rating , comment);
-  
+                //replaced review.add with the following to avoid error
+                if ( P != null && C != null)
+                {
+                    Reviews productReviews = P.getReviews();
+                    productReviews.add(reviewId , C , P , rating , comment);
+                }
+
               }
   
           }
@@ -401,6 +469,87 @@ public static void writeCSVReviews(String filePath , Review review){
            e.printStackTrace();
        }
 }
+//moved the method into main to use the static object products
+public static Review[] extractReviewsByCustomer(int customerId) {
+    int count = 0;
+    Products.ProductNode currentProductNode = products.head;
+
+    while (currentProductNode != null) {
+        Reviews productReviews = currentProductNode.product.getReviews();
+        Reviews.ReviewNode currentReviewNode = productReviews.head;
+
+        while (currentReviewNode != null) {
+            if (currentReviewNode.review.getCustomer().getCustomerId() == customerId) {
+                count++;
+            } currentReviewNode = currentReviewNode.next;
+        } currentProductNode = currentProductNode.next;
+    }
+    Review[] customerReviews = new Review[count];
+    int index = 0;
+    currentProductNode = products.head;
+
+    while (currentProductNode != null) {
+        Reviews productReviews = currentProductNode.product.getReviews();
+        Reviews.ReviewNode currentReviewNode = productReviews.head;
+
+        while (currentReviewNode != null) {
+            if (currentReviewNode.review.getCustomer().getCustomerId() == customerId) {
+                customerReviews[index] = currentReviewNode.review; // Add to array
+                index++;
+            } currentReviewNode = currentReviewNode.next;
+        } currentProductNode = currentProductNode.next;
+    } return customerReviews;
+}
+
+
+
+public static Products getProductsReviewedBy(int customerId) {
+    Products reviewedProducts = new Products();
+    Products.ProductNode currentProductNode = products.head;
+
+    while (currentProductNode != null) {
+        Product p = currentProductNode.product;
+        Reviews productReviews = p.getReviews();
+        Reviews.ReviewNode currentReviewNode = productReviews.head;
+
+        while (currentReviewNode != null) {
+            if (currentReviewNode.review.getCustomer().getCustomerId() == customerId) {
+                reviewedProducts.add(p.getProductId(), p.getName(), p.getPrice(), p.getStock());
+                break;
+            } currentReviewNode = currentReviewNode.next;
+        } currentProductNode = currentProductNode.next;
+    } return reviewedProducts;
+}
+
+public static Products listCommonProductsWithMoreThanRating(int customerId1, int customerId2) {
+    Products finalList = new Products();
+    Products list1 = getProductsReviewedBy(customerId1);
+    Products list2 = getProductsReviewedBy(customerId2);
+    Products.ProductNode current1 = list1.head;
+
+    while (current1 != null) {
+        Product p1 = current1.product;
+        Product commonProduct = list2.search(p1.getProductId());
+        if (commonProduct != null) {
+            Product originalProduct = products.search(p1.getProductId());
+            if (originalProduct.getReviews().getAverageRating() > 4.0)
+                finalList.add(p1.getProductId(), p1.getName(), p1.getPrice(), p1.getStock());
+        } current1 = current1.next;
+    } return finalList;
+}
+
+//made this method to avoid using a static object of type Review
+public static Review searchReviewGlobally(int reviewId) {
+    Products.ProductNode currentProductNode = products.head;
+
+    while (currentProductNode != null) {
+        Reviews productReviews = currentProductNode.product.getReviews();
+        Review foundReview = productReviews.search(reviewId);
+        if (foundReview != null) return foundReview;
+        currentProductNode = currentProductNode.next;
+    } return null;
+}
+
 
 
 }
