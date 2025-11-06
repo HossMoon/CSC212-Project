@@ -23,7 +23,7 @@ public class Main {
   static Reviews reviews= new Reviews();
 public static void main(String[] args) {
   readCSVCustomer("customers.csv");
-  readCSVProduct("products.csv");
+  readCSVProduct("prodcuts.csv");
   readCSVOrders("orders.csv");
   readCSVReviews("reviews.csv");
    Scanner scanner = new Scanner(System.in);
@@ -37,8 +37,8 @@ public static void main(String[] args) {
       System.out.println("Extract reviews for a customer (5)");
       System.out.println("Suggest top 3 products by average rating (6)");
       System.out.println("list Orders between two dates (7)");
-      System.out.println("list common products reviewed by two customers with average rating more than a specified rating of 5 (8)");
-      System.out.println("Exit (-1)");
+      System.out.println("list common products reviewed by two customers with average rating more than 4 of 5 (8)");
+      System.out.println("Exit (-1)\n");
       System.out.println("Enter your choice: ");
       choice = scanner.nextInt();
       if(choice == 1)
@@ -55,16 +55,17 @@ public static void main(String[] args) {
         Product newProduct = new Product(productId , name , price , stock);
         if( products.search(productId) != null)
         {
-          System.out.println("Product with this ID already exists.");
+          System.out.println("\nProduct with this ID already exists.\n");
           continue;
         }
         products.add(productId , name , price , stock);
-        writeCSVProduct("products.csv" , newProduct);
-        System.out.println("Product added successfully.");
+        writeCSVProduct("prodcuts.csv" , newProduct);
+        System.out.println("\nProduct added successfully.\n");
         
       }
       else if(choice == 2)
       {
+
         //Register customer
         System.out.println("Enter customer ID: ");
         int customerId = scanner.nextInt();
@@ -75,12 +76,12 @@ public static void main(String[] args) {
         Customer newCustomer = new Customer(customerId , name , email);
         if( customers.searchCustomer(customerId) != null)
         {
-          System.out.println("Customer with this ID already exists.");
+          System.out.println("\nCustomer with this ID already exists.\n");
           continue;
         }
         customers.register(customerId , name , email);
         writeCSVCustomer("customers.csv" , newCustomer);
-        System.out.println("Customer registered successfully.");
+        System.out.println("\nCustomer registered successfully.\n");
       }
       else if(choice == 3)
       {
@@ -89,7 +90,7 @@ public static void main(String[] args) {
         int orderId = scanner.nextInt();
         if( orders.search(orderId) != null)
         {
-          System.out.println("Order with this ID already exists.");
+          System.out.println("\nOrder with this ID already exists.\n");
           continue;
         }
         System.out.println("Enter customer ID: ");
@@ -97,7 +98,7 @@ public static void main(String[] args) {
         Customer C = customers.searchCustomer(customerId);
         if(C == null)
         {
-          System.out.println("Customer with this ID does not exist.");
+          System.out.println("C\nustomer with this ID does not exist.\n");
           continue;
         }
         Products P = new Products();
@@ -110,7 +111,7 @@ public static void main(String[] args) {
           Product temp = products.search(productId);
           if(temp == null)
           {
-            System.out.println("Product with this ID does not exist.");
+            System.out.println("\nProduct with this ID does not exist.\n");
             continue;
           }
           P.add(temp.getProductId() , temp.getName() , temp.getPrice() , temp.getStock());
@@ -122,8 +123,9 @@ public static void main(String[] args) {
         String status = "Placed";
         Order newOrder = new Order(orderId , C , P , totalPrice , orderDate , status);
         orders.create(orderId , C ,  P , totalPrice , orderDate , status);
+        C.getOrders().create(orderId , C ,  P , totalPrice , orderDate , status);
         writeCSVOrders("orders.csv" , newOrder);
-        System.out.println("Order placed successfully.");
+        System.out.println("\nOrder placed successfully.\n");
       }
       else if(choice == 4)
       {
@@ -132,7 +134,7 @@ public static void main(String[] args) {
         int reviewId = scanner.nextInt();
         if( reviews.search(reviewId) != null)
         {
-          System.out.println("Review with this ID already exists.");
+          System.out.println("\nReview with this ID already exists.\n");
           continue;
         }
         System.out.println("Enter customer ID: ");
@@ -140,7 +142,7 @@ public static void main(String[] args) {
         Customer C = customers.searchCustomer(customerId);
         if(C == null)
         {
-          System.out.println("Customer with this ID does not exist.");
+          System.out.println("\nCustomer with this ID does not exist.\n");
           continue;
         }
         System.out.println("Enter product ID: ");
@@ -148,7 +150,7 @@ public static void main(String[] args) {
         Product P = products.search(productId);
         if(P == null)
         {
-          System.out.println("Product with this ID does not exist.");
+          System.out.println("\nProduct with this ID does not exist.\n");
           continue;
         }
         System.out.println("Enter rating (1-5): ");
@@ -157,8 +159,9 @@ public static void main(String[] args) {
         String comment = scanner.next();
         Review newReview = new Review(reviewId , C , P , rating , comment);
         reviews.add(reviewId , C , P , rating , comment);
+        P.getReviews().add(reviewId , C , P , rating , comment);
         writeCSVReviews("reviews.csv" , newReview);
-        System.out.println("Review added successfully.");
+        System.out.println("\nReview added successfully.\n");
       }
       else if(choice == 5)
       {
@@ -167,36 +170,66 @@ public static void main(String[] args) {
         int customerId = scanner.nextInt();
         if( customers.searchCustomer(customerId) == null)
         {
-          System.out.println("Customer with this ID does not exist.");
+          System.out.println("\nCustomer with this ID does not exist.\n");
           continue;
         }
-        Review[] reviewCustomers = reviews.extractReviewCustomer(customerId);
-        System.out.println("Reviews for customer ID " + customerId + ":");
-        for(Review cust : reviewCustomers)
-        {
-          System.out.println("Review ID: " + cust.getReviewId() + ", Product ID: " + cust.getProduct().getProductId() + ", Rating: " + cust.getRating() + ", Comment: " + cust.getComment());
-        }
+        Reviews reviewCustomers = reviews.extractReviewCustomer(customerId);
+        reviewCustomers.printReviews();
         
       }
       else if(choice == 6)
       {
         //Suggest top 3 products by average rating
-        System.out.println("Top 3 products by average rating:");
-        
+        products.getTopThreeProducts();
       }
       else if(choice == 7)
       {
         //list Orders between two dates
+        System.out.println("Enter start date (YYYY-MM-DD): ");
+        String startDate = scanner.next();
+        System.out.println("Enter end date (YYYY-MM-DD): ");
+        String endDate = scanner.next();
+        Orders ordersBetweenDates = orders.getOrdersBetweenDates(startDate , endDate);
+        if(ordersBetweenDates == null)
+        {
+          System.out.println("\nNo orders found between the given dates.\n");
+          continue;
+        }
+        System.out.println("Orders between " + startDate + " and " + endDate + ":");
+        ordersBetweenDates.printOrders();
       }
       else if(choice == 8)
       {
-        //list common products reviewed by two customers with average rating more than a specified rating of 5
+     //list common products reviewed by two customers with average rating > 4
+          System.out.println("Enter first customer ID: ");
+          int id1 = scanner.nextInt();
+          if(customers.searchCustomer(id1) == null) {
+              System.out.println("\nCustomer 1 not found.\n");
+              continue;
+          }
+          System.out.println("Enter second customer ID: ");
+          int id2 = scanner.nextInt();
+          if(customers.searchCustomer(id2) == null) {
+              System.out.println("\nCustomer 2 not found.\n");
+              continue;
+          }
+          Products commonList = reviews.listCommonProductsWithMoreThanFour(id1, id2);
+          System.out.println("\nCommon products with rating > 4.0:");
+          commonList.printProducts();
       }
-
-
-   }
-
-}
+      else if(choice == -1)
+      {
+        System.out.println("Exiting...");
+        break;
+      }
+      else
+      {
+        System.out.println("Invalid choice. Please try again.");
+      }
+      scanner.nextLine(); // consume newline
+      }
+      scanner.close();
+  }
 
 // CSV read and write methods
 public static void readCSVProduct(String filePath){
@@ -272,12 +305,11 @@ public static void readCSVOrders(String filePath){
                 String orderDate = values[4].trim();
                 String status = values[5].trim();
                 //place order for the customer
-                customers.placeOrder(customerId , orderId , orderDate );
                 Products P = new Products();
                 String[] productIds = values[2].split(";");
                 for(String i : productIds) //adding products list to the order
                 {
-                  int pid = Integer.parseInt(i);
+                  int pid = Integer.parseInt(i.trim().replace("\"", ""));
                   Product temp = products.search(pid);
                   if(temp != null)
                   {
@@ -287,6 +319,7 @@ public static void readCSVOrders(String filePath){
                 }
                 Customer C = customers.searchCustomer(customerId); //getting customer object
                 orders.create(orderId , C ,  P , totalPrice , orderDate , status); //add order to the system
+                C.getOrders().create(orderId , C ,  P , totalPrice , orderDate , status); //add order to the customer's order list
   
               }
   
@@ -310,15 +343,18 @@ public static void readCSVReviews(String filePath){
               {
                 //getting data
                 int reviewId = Integer.parseInt(values[0]);
-                int customerId = Integer.parseInt(values[1]);
-                int productId = Integer.parseInt(values[2]);
+                int productId = Integer.parseInt(values[1]);
+                int customerId = Integer.parseInt(values[2]);
                 int rating = Integer.parseInt(values[3]);
                 String comment = values[4].trim();
                 //add review to the system
                 Customer C = customers.searchCustomer(customerId);
                 Product P = products.search(productId);
+                if(C!= null && P!=null)
+                {
                 reviews.add(reviewId , C , P , rating , comment);
-  
+                P.getReviews().add(reviewId , C , P , rating , comment);
+                }
               }
   
           }
@@ -332,7 +368,7 @@ public static void writeCSVProduct(String filePath , Product product){
         FileWriter fileWriter = null;
         try {
            fileWriter = new FileWriter(filePath, true); // append mode
-           fileWriter.write(product.getProductId() + "," + product.getName() + "," + product.getPrice() + "," + product.getStock() + "\n");
+           fileWriter.write("\n"+product.getProductId() + "," + product.getName() + "," + product.getPrice() + "," + product.getStock());
         }catch (IOException e) {
            e.printStackTrace();
         }
@@ -350,7 +386,7 @@ public static void writeCSVCustomer(String filePath , Customer customer){
     FileWriter fileWriter = null;
     try {
        fileWriter = new FileWriter(filePath, true); // append mode
-       fileWriter.write(customer.getCustomerId() + "," + customer.getName() + "," + customer.getEmail() + "\n");
+       fileWriter.write("\n"+customer.getCustomerId() + "," + customer.getName() + "," + customer.getEmail());
     }catch (IOException e) {
        e.printStackTrace();
     }
@@ -369,8 +405,8 @@ public static void writeCSVOrders(String filePath , Order order){
      FileWriter fileWriter = null;
      try{
         fileWriter = new FileWriter(filePath, true); // append mode
-        String ProductIds = order.getProducts().getProuductIds();
-        fileWriter.write(order.getOrderId() + "," + order.getCustomer().getCustomerId() + "," + ProductIds + "," + order.getTotalPrice() + "," + order.getOrderDate() + "," + order.getStatus() + "\n");
+        String ProductIds = order.getProducts().getProductsIds();
+        fileWriter.write("\n"+order.getOrderId() + "," + order.getCustomer().getCustomerId() + "," + ProductIds + "," + order.getTotalPrice() + "," + order.getOrderDate() + "," + order.getStatus());
      }catch (IOException e) {
         e.printStackTrace();
      }
@@ -388,8 +424,7 @@ public static void writeCSVReviews(String filePath , Review review){
     FileWriter fileWriter = null;
     try {
        fileWriter = new FileWriter(filePath, true); // append mode
-       fileWriter.write(review.getReviewId() + "," + review.getCustomer().getCustomerId() + "," + review.getProduct().getProductId() + "," + review.getRating() + "," + review.getComment() + "\n");
-    }catch (IOException e) {
+       fileWriter.write("\n"+review.getReviewId() + "," + review.getProduct().getProductId() + "," + review.getCustomer().getCustomerId() + "," + review.getRating() + "," + review.getComment());    }catch (IOException e) {
        e.printStackTrace();
     }
        try {

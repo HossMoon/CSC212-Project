@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram name="Page-1" id="d0u6RTfk0OXgRFsqk2fG">
+    <mxGraphModel dx="1960" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="njWspsJBCFbnU1pikaF--1" value="Product" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="320" width="140" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--5" value="Customer" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="140" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Order&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;div style=&quot;height:2px;&quot;&gt;&lt;/div&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="260" y="430" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Review&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="260" y="210" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--11" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="njWspsJBCFbnU1pikaF--9" target="njWspsJBCFbnU1pikaF--5">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="370" y="360" as="sourcePoint" />
+            <mxPoint x="530" y="330" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--13" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="480" y="515" as="geometry">
+            <mxPoint x="66" y="-112" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--14" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="410" y="420" as="geometry">
+            <mxPoint x="14" y="38" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--15" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="njWspsJBCFbnU1pikaF--9" target="njWspsJBCFbnU1pikaF--1">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="110" y="390" as="sourcePoint" />
+            <mxPoint x="240" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--17" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="160" y="372" as="geometry">
+            <mxPoint x="-18" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--18" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="520" y="630" as="geometry">
+            <mxPoint x="-292" y="-188" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--19" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="njWspsJBCFbnU1pikaF--1" target="njWspsJBCFbnU1pikaF--10">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="80" y="220" as="sourcePoint" />
+            <mxPoint x="240" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--20" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="njWspsJBCFbnU1pikaF--19">
+          <mxGeometry x="-1" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--21" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="530" y="440" as="geometry">
+            <mxPoint x="-292" y="-188" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--22" value="" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="njWspsJBCFbnU1pikaF--5">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="400" y="230" as="sourcePoint" />
+            <mxPoint x="560" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--24" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="710" y="410" as="geometry">
+            <mxPoint x="-292" y="-188" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--27" value="Product" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-560" y="180" width="380" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--28" value="&lt;div style=&quot;line-height: 100%;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); font-size: 9px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;line-height: 9px;&quot;&gt;public&amp;nbsp;Products()&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;p style=&quot;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); font-size: 9px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;line-height: 9px;&quot;&gt;public&amp;nbsp;void&amp;nbsp;add(int&amp;nbsp;productId,&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 9px;&quot;&gt;&lt;font style=&quot;line-height: 9px;&quot;&gt;String name , double price , int stock)&lt;/font&gt;&lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 9px;&quot;&gt;&lt;font style=&quot;line-height: 100%;&quot;&gt;boolean remove(int productId)&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;div style=&quot;font-family: Menlo, Monaco, &amp;quot;Courier New&amp;quot;, monospace; white-space: pre;&quot;&gt;&lt;div&gt;&lt;p style=&quot;font-family: Helvetica; white-space: normal;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); font-size: 9px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;line-height: 9px;&quot;&gt;public&amp;nbsp;void&amp;nbsp;add(int&amp;nbsp;productId,&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 9px;&quot;&gt;&lt;font style=&quot;line-height: 9px;&quot;&gt;String name , double price , int stock)&lt;/font&gt;&lt;/b&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237)); font-size: 9px;&quot;&gt;&lt;font style=&quot;line-height: 9px;&quot;&gt;boolean remove(int productId)&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;boolean&lt;/span&gt; &lt;span&gt;update&lt;/span&gt;(&lt;span&gt;int&lt;/span&gt; &lt;span&gt;productId&lt;/span&gt;, &lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt; String&lt;/span&gt; &lt;span&gt;name&lt;/span&gt;, &lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt; double&lt;/span&gt; &lt;span&gt;price&lt;/span&gt;, &lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt; int&lt;/span&gt; &lt;span&gt;stock&lt;/span&gt;)&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;Product&lt;/span&gt; &lt;span&gt;search&lt;/span&gt;(&lt;span&gt;int&lt;/span&gt; &lt;span&gt;productId&lt;/span&gt;)&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;void&lt;/span&gt; &lt;span&gt;trackOutOfStock&lt;/span&gt;()&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;void&lt;/span&gt; &lt;span&gt;getTopThreeProducts&lt;/span&gt;()&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;private&lt;/span&gt; &lt;span&gt;void&lt;/span&gt; &lt;span&gt;sort&lt;/span&gt;(&lt;span&gt;double&lt;/span&gt;[] &lt;span&gt;values&lt;/span&gt; , &lt;span&gt;String&lt;/span&gt;[] &lt;span&gt;iDs&lt;/span&gt;)&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;void&lt;/span&gt; &lt;span&gt;printProducts&lt;/span&gt;()&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;String&lt;/span&gt; &lt;span&gt;getProductsIds&lt;/span&gt;()&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;line-height: 100%; background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); font-size: 9px; color: rgb(0, 0, 0);&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;span&gt;public&lt;/span&gt; &lt;span&gt;void&lt;/span&gt; &lt;span&gt;addReviewsToProduct&lt;/span&gt;(&lt;span&gt;int&lt;/span&gt; &lt;span&gt;productId&lt;/span&gt;, &lt;span&gt;Reviews&lt;/span&gt; &lt;span&gt;reviews&lt;/span&gt;)&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="njWspsJBCFbnU1pikaF--27">
+          <mxGeometry y="26" width="380" height="244" as="geometry" />
+        </mxCell>
+        <mxCell id="njWspsJBCFbnU1pikaF--33" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="390" y="700" as="geometry">
+            <mxPoint x="159" y="-396" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
